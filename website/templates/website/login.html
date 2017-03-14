@@ -1,4 +1,4 @@
-{% extends 'website/home.html' %}
+{% extends 'website/base.html' %}
 {% block title %}Log In{% endblock %}
 {% block login_active %}active{% endblock %}
 
@@ -18,24 +18,30 @@
                         <div class="form-group">
                             <label class="control-label col-sm-15" for="id_username">
                                 <font size="5">
-                                    UserID:
+                                    Username:
                                 </font>
                             </label>
                             <div class="col-sm-20">
                                 <input id="id_username" maxlength="30" name="username" type="text">
                             </div>
                         </div>
+                        {% csrf_token %}
                         <div class="form-group">
-                            <label class="control-label col-sm-15" for="id_password">
+                            <label class="control-label col-sm-15" for="password">
                                 <font size="5">
                                     Password:
                                 </font>
 
                             </label>
                             <div class="col-sm-20">
-                                <input id="id_password" maxlength="30" name="password" type="password">
+                                <input id="password" maxlength="30" name="password" type="password">
                             </div>
+                            <button type="button" id="eye" onclick="if(password.type=='text')password.type='password'; else password.type='text';">
+                                Show/Hide Password
+                            </button>
                         </div>
+                        <br>
+
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-success">Submit</button>
