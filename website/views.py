@@ -40,16 +40,12 @@ def login_view(request):
         password = form.cleaned_data.get("password")
         user = authenticate(username=username, password=password)
         login(request, user)
-        print("user:", user)
         user = Student.objects.get(username=username)
-        print("before condition", user.has_logged_in_first_time, user.changed_password_atleast_once)
         if not user.changed_password_atleast_once:
             if not user.has_logged_in_first_time:
                 user.has_logged_in_first_time = True
                 user.save()
                 return redirect('website.views.set_password_unusable')
-        print('going there')
-        # user.is_logging_in_first_time = False
         return redirect('website.views.home')
     return render(request, 'website/login.html', {"form": form})
 
@@ -60,8 +56,6 @@ def change_password(request):
         #user = request.user
         username = form.cleaned_data.get("username")
         user = Student.objects.get(username=username)
-        print(user)
-        print("username:", username)
         password = form.cleaned_data.get("new_password")
         if not password_strength_ok(password):
             messages.error(request, 'Choose a strong password')
@@ -76,28 +70,16 @@ def change_password(request):
         login(request, new_user)
         messages.success(request, 'Password was successfully changed!')
         user = Student.objects.get(username=username)
-        print("from change_password_view", user)
         user.changed_password_atleast_once = True
         user.save()
         print(user.changed_password_atleast_once)
-        # user.is_logging_in_first_time = True
         return redirect('website.views.home')
     return render(request, "website/change_password.html", {"form": form})
-
-
-"""
-def if_logging_for_first_time(request):
-    user = request.user
-    user = Student.objects.get(username=user.username)
-    if user.is_logging_in_first_time:
-        return redirect('website.views.change_password')
-"""
 
 
 def set_password_unusable(request):
     user = request.user
     user.set_unusable_password()
     user.save()
-    print("password set unusable")
     return redirect('website.views.change_password')
 
