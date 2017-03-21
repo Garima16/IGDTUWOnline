@@ -14,5 +14,4 @@ for line in file:
     user.is_superuser = True
     user.is_staff = True
     user.save()
-        #authenticate(username=username, password=password)
 

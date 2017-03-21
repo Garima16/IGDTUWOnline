@@ -26,7 +26,6 @@ class UserLoginForm(forms.Form):
 
 
 class ChangePasswordForm(forms.Form):
-    username = forms.CharField()
     new_password = forms.CharField(widget=forms.PasswordInput,
                                    help_text='Password should be atleast 8 characters long.\n'
                                              'Choose a password combination of atlesat an alphabet in both uppercase and lowercase,'
