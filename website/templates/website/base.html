@@ -1,30 +1,27 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <!-- Compiled and minified CSS -->
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 
-            <!-- Compiled and minified JavaScript -->
+                <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-</head>
-<body>
+    </head>
 
+    <body>
 
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                </div>
 
-
-
-<div class="content container">
-    <div class="row">
-        <div class="col-md-8">
-            {% block content %}
-            {% endblock %}
+            </div>
         </div>
 
-    </div>
-</div>
-
-</body>
+    </body>
 </html>
