@@ -4,8 +4,7 @@ from website.models import Student
 
 #with open('credentials.txt', 'r') as file:
 #file=[]
-file = [['aalo', 'aalo'], ['gjain', 'gjain'], ['shreya', 'shreya'], ['goma', 'goma'], ['me', 'me']]
-#file=[['goma', 'goma'], ['sheldon', 'sheldon']]
+file = [['aalo', 'aalo'], ['gjain', 'gjain'], ['shreya', 'shreya']]
 for line in file:
         #data = line.strip().split(',')
     username = line[0]
